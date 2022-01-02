@@ -3,9 +3,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: () => {
-      return { path: '/home' }
-    },
+    redirect: '/home',
   },
   {
     path: '/home',
@@ -13,10 +11,8 @@ const routes: Array<RouteRecordRaw> = [
     component: HelloWorld,
   },
   {
-    path: '/:currentPath(.*)*',
-    redirect: (_) => {
-      return { path: '/404' }
-    },
+    path: "/:catchAll(.*)",
+    redirect: '/home',
   },
 ]
 const router = createRouter({
