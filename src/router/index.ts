@@ -1,22 +1,18 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HelloWorld from '@/components/HelloWorld.vue'
+import { repo } from '../config/config'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/home',
-  },
-  {
-    path: '/home',
-    name: 'HelloWorld',
-    component: HelloWorld,
+    component: undefined,
+    redirect: ''
   },
   {
     path: "/:catchAll(.*)",
-    redirect: '/home',
+    redirect: '/',
   },
 ]
 const router = createRouter({
-  history: createWebHistory(''),
+  history: createWebHistory(`/${repo}/`),
   routes,
   scrollBehavior(to, from, savedPosition) {
     return {
