@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
   },
 ]
 const router = createRouter({
-  history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHistory(`/${repo}/`),
+  history: process.env.NODE_ENV === 'production' ? createWebHistory(`/${repo}/`): createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
     return {
