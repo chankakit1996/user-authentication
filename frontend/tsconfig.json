@@ -11,8 +11,12 @@
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "importHelpers": true,
-        "lib": ["esnext", "dom"]
+        "lib": ["esnext", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-    "exclude": ["src/**/config-sample.ts"]
+    "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
+    "exclude": ["**/config-sample.ts"]
 }

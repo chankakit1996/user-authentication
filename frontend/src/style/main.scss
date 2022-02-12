@@ -17,3 +17,7 @@ body {
   position: relative;
   overflow: auto;
 }
+
+input:focus-visible {
+  outline: none;
+}

@@ -1,0 +1,11 @@
+{
+  "name": "project-skeleton",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "cd ./frontend && npm run dev",
+    "serve": "cd ./backend && npm run serve",
+    "start": "concurrently \"cd ./backend && npm run serve\" \"cd ./frontend && npm run dev\""
+  },
+  "author": "",
+  "license": "ISC"
+}

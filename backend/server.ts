@@ -12,6 +12,8 @@ app.use(bodyParser.json())
 const db = mongoDB.URL
 mongoose.connect(db).then(() => {
     console.log('mongo DB is connected')
+}).catch((e) => {
+    console.log(e)
 })
 
 const port = process.env.PORT || 4000
