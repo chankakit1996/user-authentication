@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "serve": "nodemon -r tsconfig-paths/register index.ts"
+    "serve": "nodemon -r tsconfig-paths/register server.ts"
   },
   "author": "",
   "license": "ISC",
