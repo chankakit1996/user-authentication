@@ -2,7 +2,7 @@
   "compilerOptions": {
       "target": "esnext",
       "useDefineForClassFields": true,
-      "module": "none",
+      "module": "CommonJS",
       "moduleResolution": "node",
       "noImplicitAny": true,
       "strict": true,
@@ -12,7 +12,10 @@
       "importHelpers": true,
       "lib": ["esnext", "dom"],
       "baseUrl": ".",
+      "isolatedModules": true,
+      "outDir": "./output",
+      "allowSyntheticDefaultImports": true,
+      "typeRoots": ["./typings", "./node_modules/@types"],
   },
   "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
-  "exclude": ["**/config-sample.ts"]
 }

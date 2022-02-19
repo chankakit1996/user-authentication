@@ -1,23 +1,32 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { mongoDB } from './config/config';
-import mongoose from 'mongoose';
+import { corsOpts, mongoDB } from './config/config';
+import router from './routes';
+import timeout from 'connect-timeout';
 
-const app = express()
+const app = express();
 
-// Body parser middleware
-app.use(bodyParser.json())
+app.use(cors(corsOpts));
+app.use(bodyParser.json());
+app.use('/api/', router);
 
-const db = mongoDB.URL
-mongoose.connect(db).then(() => {
-    console.log('mongo DB is connected')
-}).catch((e) => {
-    console.log(e)
-})
+const port = process.env.PORT || 4000;
+const dbURL = mongoDB.URL;
 
-const port = process.env.PORT || 4000
+mongoose
+    .connect(dbURL)
+    .then(() => {
+        const connection = mongoose.connection;
+        console.log(
+            `database ${connection.name} is connected at ${connection.host}:${connection.port}`
+        );
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 
 app.listen(port, () => {
-    console.log(`Server is started at ${port}`)
-})
+    console.log(`Server is started at ${port}`);
+});
