@@ -2,14 +2,11 @@
   "name": "project-skeleton",
   "version": "1.0.0",
   "scripts": {
+    "install": "concurrently \"cd ./backend && npm ci\" \"cd ./frontend && npm ci\"",
     "dev": "cd ./frontend && npm run dev",
     "serve": "cd ./backend && npm run serve",
     "start": "concurrently \"cd ./backend && npm run serve\" \"cd ./frontend && npm run dev\""
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@dicebear/avatars": "^4.10.2",
-    "@dicebear/avatars-avataaars-sprites": "^4.10.2"
-  }
+  "license": "ISC"
 }
