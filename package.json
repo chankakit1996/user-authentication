@@ -7,5 +7,9 @@
     "start": "concurrently \"cd ./backend && npm run serve\" \"cd ./frontend && npm run dev\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@dicebear/avatars": "^4.10.2",
+    "@dicebear/avatars-avataaars-sprites": "^4.10.2"
+  }
 }

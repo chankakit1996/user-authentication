@@ -3,11 +3,13 @@
         <div class="wrapper">
             <div class="left">
                 <div class="left-inner">
-                    <router-view v-slot="{ Component }">
-                        <transition name="fade" mode="out-in">
-                            <component :is="Component" class="component-body" />
-                        </transition>
-                    </router-view>
+                    <Suspense>
+                        <router-view v-slot="{ Component }">
+                            <transition name="fade" mode="out-in">
+                                <component :is="Component" class="component-body" />
+                            </transition>
+                        </router-view>
+                    </Suspense>
                 </div>
                 <Loading />
             </div>

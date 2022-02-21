@@ -10,7 +10,7 @@ const state: State = {
     loading: 0,
 };
 
-const loading = {
+export const loading = {
     namespaced: true,
     state: state,
     getters: {},
@@ -26,11 +26,9 @@ const loading = {
             Object.assign(state, payload);
         },
         addCount(state: State) {
-            console.log("add count")
             state.loading += 1;
         },
         minusCount(state: State) {
-            console.log("minus count")
             state.loading -= 1;
         },
     },
@@ -38,15 +36,11 @@ const loading = {
         set(context: ActionContext<any, any>, payload: Object) {
             context.commit('set', payload);
         },
-        async load(
-            context: ActionContext<any, any>,
-            fn: any
-        ) {
+        async load(context: ActionContext<any, any>, fn: any) {
             context.commit('addCount');
-            await sleep(fn, 1000)
+            const res = await sleep(fn, 1000);
             context.commit('minusCount');
+            return res;
         },
     },
 };
-
-export default loading;

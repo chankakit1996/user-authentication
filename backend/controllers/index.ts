@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import User from 'models';
 import HttpStatusCode from 'helpers/http-status-code';
+import { AuthRequest } from 'typings';
 
 const getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -11,7 +12,9 @@ const getUsers = async (req: Request, res: Response, next: NextFunction) => {
         });
     } catch (err) {
         res.status(HttpStatusCode.NOT_FOUND).json({
-            errors: 'some error occurs',
+            errors: [
+                'some error occurs. Maybe free database is full. Please try again.',
+            ],
         });
     }
 };
@@ -37,7 +40,9 @@ const register = async (req: Request, res: Response) => {
             });
         } else {
             res.status(HttpStatusCode.BAD_REQUEST).json({
-                errors: ['some error occurs'],
+                errors: [
+                    'some error occurs. Maybe free database is full. Please try again.',
+                ],
             });
         }
     }
@@ -74,13 +79,12 @@ const resetPassword = async (req: Request, res: Response) => {
     }
 };
 
-const logout = async (req: Request, res: Response) => {
+const logout = async (request: Request, res: Response) => {
     try {
-        const { token, user } = req;
-        if (!token) throw Error();
-        if (!user) throw Error();
+        const req = request as AuthRequest;
+        const { user } = req;
         user.jwt = user.jwt.filter((token) => {
-            token !== token;
+            token.token !== req.token;
         });
         await user.save();
         res.status(HttpStatusCode.OK).json({
@@ -90,13 +94,27 @@ const logout = async (req: Request, res: Response) => {
         });
     } catch (err) {
         res.status(HttpStatusCode.BAD_REQUEST).json({
-            error: 'you have logout or you are not logged in',
+            errors: ['you have logout or you are not logged in'],
         });
     }
 };
 
-const logoutAll = async (req: Request, res: Response) => {
-    res.json('api works');
+const logoutAll = async (request: Request | AuthRequest, res: Response) => {
+    try {
+        const req = request as AuthRequest;
+        const { user } = req;
+        user.jwt = [];
+        await user.save();
+        res.status(HttpStatusCode.OK).json({
+            data: {
+                message: 'you have successfully logged out all machine.',
+            },
+        });
+    } catch (err) {
+        res.status(HttpStatusCode.BAD_REQUEST).json({
+            errors: ['you have logout or you are not logged in'],
+        });
+    }
 };
 
 export default {

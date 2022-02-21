@@ -5,11 +5,11 @@ import auth from 'middleware/auth'
 const router = express.Router();
 
 router
-    .get('/get-all-users', auth, user.getUsers)
+    .get('/get-users', auth, user.getUsers)
     .post('/register', user.register)
     .post('/login', user.login)
-    .post('/logout', auth, user.logout)
-    .post('/logout-all', auth, user.logoutAll)
+    .get('/logout', auth, user.logout)
+    .get('/logout-all', auth, user.logoutAll)
     .post('/reset-password', user.resetPassword);
 
 export default router;

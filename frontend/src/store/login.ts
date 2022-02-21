@@ -97,7 +97,7 @@ export const login = {
                         localStorage.setItem('token', token);
 
                         router.push({
-                            name: 'login'
+                            name: 'admin'
                         });
                     } else {
                         let message = '';

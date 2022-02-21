@@ -3,7 +3,8 @@ import { register } from './register';
 import { login } from './login';
 import { resetPassword } from './reset-password';
 import { http } from './http';
-import loading from './loading';
+import { loading } from './loading';
+import { admin } from './admin';
 
 export const store = createStore({
     modules: {
@@ -11,6 +12,7 @@ export const store = createStore({
         login,
         resetPassword,
         http,
-        loading
+        loading,
+        admin,
     },
 });

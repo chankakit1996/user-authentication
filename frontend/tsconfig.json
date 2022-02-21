@@ -15,7 +15,8 @@
         "baseUrl": ".",
         "paths": {
             "@/*": ["./src/*"]
-        }
+        },
+        "typeRoots": ["./typings", "./node_modules/@types"],
     },
     "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
     "exclude": ["**/config-sample.ts"]

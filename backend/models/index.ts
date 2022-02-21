@@ -14,8 +14,8 @@ export interface UserInterface {
 }
 
 export interface UserDocument extends UserInterface, Document {
-    comparePassword: (candidatePassword: string) => Boolean;
-    getJWT: () => String;
+    comparePassword: (candidatePassword: string) => Promise<Boolean>;
+    getJWT: () => Promise<String>;
 }
 
 interface UserModel extends Model<UserDocument> {
@@ -84,7 +84,7 @@ userSchema.methods.getJWT = async function () {
             email: user.email,
         },
         jwtConfig.secret,
-        { expiresIn: '7 day' }
+        { expiresIn: '7 days' }
     );
     // token
     user.jwt = user.jwt.concat({ token });

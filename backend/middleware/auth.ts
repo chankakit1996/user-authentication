@@ -13,13 +13,13 @@ export default async (req: Request, res: Response, next: NextFunction) => {
             _id: decoded._id,
             'jwt.token': token,
         });
-        if (!user) {
-            throw new Error();
-        }
+        if (!user) throw new Error();
         req.token = token;
         req.user = user;
         next();
     } catch (err) {
-        res.status(401).json({ error: 'Please register and login to continue.' });
+        res.status(401).json({
+            errors: ['Please register or login again to continue.'],
+        });
     }
 };

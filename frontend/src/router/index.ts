@@ -28,7 +28,10 @@ const routes: Array<RouteRecordRaw> = [
     {
         name: 'admin',
         path: '/admin',
-        component: Admin
+        component: Admin,
+        meta: {
+            requiresAuth: true,
+        },
     },
     {
         path: '/:catchAll(.*)',
@@ -48,5 +51,15 @@ const router = createRouter({
             behavior: 'smooth',
         };
     },
+});
+
+router.beforeEach((to, from) => {
+    if (to.meta.requiresAuth && !localStorage.getItem('token')) {
+        return {
+            path: '/login',
+            // save the location we were at to come back later
+            query: { redirect: to.fullPath },
+        };
+    }
 });
 export default router;
