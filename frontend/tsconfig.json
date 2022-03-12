@@ -17,6 +17,7 @@
             "@/*": ["./src/*"]
         },
         "typeRoots": ["./typings", "./node_modules/@types"],
+        "outDir": "./dist"
     },
     "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
     "exclude": ["**/config-sample.ts"]

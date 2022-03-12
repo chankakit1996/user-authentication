@@ -6,9 +6,10 @@ import { repo } from './src/config/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [vue()],
-    base: process.env.NODE_ENV === 'production' ? `/${repo}/` : './',
+    base: process.env.NODE_ENV === 'production' ? `${repo}` : './',
     build: {
         minify: true,
+        outDir: path.resolve(__dirname, '../public')
     },
     resolve: {
         alias: {

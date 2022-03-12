@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { Document, Types } from 'mongoose';
-import { UserDocument } from 'models';
+import { UserDocument } from '../models';
 
 export interface AuthRequest extends Request {
     token: string;

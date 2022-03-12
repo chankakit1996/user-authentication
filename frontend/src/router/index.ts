@@ -4,12 +4,13 @@ import Register from '../view/Register.vue';
 import Login from '../view/Login.vue';
 import ResetPassword from '../view/ResetPassword.vue';
 import Admin from '../view/Admin.vue';
+import PageNotFound from '../view/PageNotFound.vue';
 
 const routes: Array<RouteRecordRaw> = [
-    // {
-    //     path: '/',
-    //     component: MainPage,
-    // },
+    {
+        path: '/',
+        redirect: '/login'
+    },
     {
         name: 'register',
         path: '/register',
@@ -34,14 +35,15 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     {
-        path: '/:catchAll(.*)',
-        redirect: '/login',
+        path: '/:pathMatch(.*)*',
+        name: 'not-found',
+        component: PageNotFound,
     },
 ];
 const router = createRouter({
     history:
         process.env.NODE_ENV === 'production'
-            ? createWebHistory(`/${repo}/`)
+            ? createWebHistory(`${repo}`)
             : createWebHistory(),
     routes,
     scrollBehavior(to, from, savedPosition) {
@@ -54,6 +56,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
+    if (to.path)
     if (to.meta.requiresAuth && !localStorage.getItem('token')) {
         return {
             path: '/login',

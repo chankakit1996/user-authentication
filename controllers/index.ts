@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
-import User from 'models';
-import HttpStatusCode from 'helpers/http-status-code';
-import { AuthRequest } from 'typings';
+import User from '../models';
+import HttpStatusCode from '../helpers/http-status-code';
+import { AuthRequest } from '../typings';
 
 const getUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {

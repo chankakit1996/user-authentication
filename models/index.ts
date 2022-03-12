@@ -1,8 +1,8 @@
-import { validateEmail } from 'helpers/validation';
+import { validateEmail } from '../helpers/validation';
 import mongoose, { Model, Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { bcryptConfig, jwtConfig } from 'config/config';
+import { bcryptConfig, jwtConfig } from '../config/config';
 
 export interface UserInterface {
     username: string;

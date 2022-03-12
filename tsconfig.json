@@ -8,14 +8,16 @@
       "strict": true,
       "jsx": "preserve",
       "sourceMap": true,
-      "esModuleInterop": true,
       "importHelpers": true,
       "lib": ["esnext", "dom"],
-      "baseUrl": ".",
       "isolatedModules": true,
-      "outDir": "./output",
+      "outDir": "./dist",
       "allowSyntheticDefaultImports": true,
       "typeRoots": ["./typings", "./node_modules/@types"],
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "removeComments": true
   },
   "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
+  "exclude": ["node_modules", ".vscode", "frontend"]
 }

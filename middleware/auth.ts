@@ -1,7 +1,7 @@
-import { jwtConfig } from 'config/config';
+import { jwtConfig } from '../config/config';
 import { NextFunction, Request, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import User from 'models';
+import User from '../models';
 
 export default async (req: Request, res: Response, next: NextFunction) => {
     try {

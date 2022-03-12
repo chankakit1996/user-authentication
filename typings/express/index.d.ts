@@ -5,9 +5,9 @@ declare namespace Express {
             | (import('mongoose').Document<
                   unknown,
                   any,
-                  import('models').UserDocument
+                  import('../../models').UserDocument
               > &
-                  import('models').UserDocument & {
+                  import('../../models').UserDocument & {
                       _id: import('mongoose').Types.ObjectId;
                   })
             | null;

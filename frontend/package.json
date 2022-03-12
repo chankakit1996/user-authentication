@@ -2,8 +2,8 @@
   "name": "project-skeleton",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --config ./vite.config.ts",
-    "build": "vue-tsc --noEmit && vite build",
+    "start": "vite --config ./vite.config.ts",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
