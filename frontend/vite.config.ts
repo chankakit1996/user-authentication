@@ -9,7 +9,8 @@ export default defineConfig({
     base: process.env.NODE_ENV === 'production' ? `${repo}` : './',
     build: {
         minify: true,
-        outDir: path.resolve(__dirname, '../public')
+        outDir: path.resolve(__dirname, '../public'),
+        emptyOutDir: true,
     },
     resolve: {
         alias: {
@@ -25,6 +26,7 @@ export default defineConfig({
                 @import "@/style/_variables.scss";
                 @import "@/style/_mixins.scss";
               `,
+                charset: false,
             },
         },
     },
