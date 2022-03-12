@@ -44,7 +44,7 @@ import { User } from '../store/admin';
 
 export default defineComponent({
     name: 'Admin',
-    async setup() {
+    setup() {
         const { state, dispatch, commit, getters } = useStore();
         const route = useRoute();
         const root = { root: true };
@@ -55,7 +55,9 @@ export default defineComponent({
         const logoutAll = () => {
             dispatch('admin/logoutAll');
         };
-        users.value = await dispatch('admin/getUsers');
+        onMounted(async () => {
+            users.value = await dispatch('admin/getUsers');
+        });
         return {
             route,
             users,

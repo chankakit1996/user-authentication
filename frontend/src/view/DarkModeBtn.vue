@@ -27,7 +27,7 @@ export default defineComponent({
     emits: ['darkMode'],
     setup(props, context) {
         const darkMode = ref(false);
-        const switchDarkMode = (event) => {
+        const switchDarkMode = (event: Event) => {
             event.preventDefault()
             darkMode.value = !darkMode.value;
             context.emit('darkMode', darkMode.value);

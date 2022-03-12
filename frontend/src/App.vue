@@ -3,13 +3,11 @@
         <div class="wrapper">
             <div class="left">
                 <div class="left-inner">
-                    <Suspense>
-                        <router-view v-slot="{ Component }">
-                            <transition name="fade" mode="out-in">
-                                <component :is="Component" class="component-body" />
-                            </transition>
-                        </router-view>
-                    </Suspense>
+                    <router-view v-slot="{ Component }">
+                        <transition name="fade" mode="out-in">
+                            <component :is="Component" class="component-body" />
+                        </transition>
+                    </router-view>
                 </div>
                 <Loading />
             </div>
@@ -35,7 +33,7 @@ export default defineComponent({
     setup() {
         document.title = 'User Authentication';
         const darkMode = ref(false);
-        const switchDarkMode = (v) => {
+        const switchDarkMode = (v: boolean) => {
             darkMode.value = v;
         };
         return {
